@@ -13,7 +13,7 @@ Sidekiq.subscribe do
 end
 
 Sidekiq.subscribe do
-  on 'rectify_claims', (event) -> {
+  on 'rectify_claims', -> (event) {
     RectifyClaimsWorker.perform_async(event.args, extra_options={})
   }
 end
